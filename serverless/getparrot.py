@@ -14,7 +14,7 @@ s3 = boto3.resource("s3")
 def getparrot(event, context):
     '''Get the parrot!'''
 
-    # deltemp()
+    deltemp()
 
     s3.Bucket(BUCKET_NAME).download_file(URL_LIST, "/tmp/" + URL_LIST)
     url = (random.choice(list(open("/tmp/" + URL_LIST))))
