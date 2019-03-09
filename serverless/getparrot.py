@@ -28,7 +28,7 @@ def getparrot(event, context):
 
 
 def deltemp():
-    '''The function won't run if tmp stroage is full.
+    '''The Lambda won't run if tmp stroage is full.
     Mostly only applicable when testing during
     development.'''
 
