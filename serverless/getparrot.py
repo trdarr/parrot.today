@@ -1,4 +1,3 @@
-import os
 import boto3
 import random
 import urllib.request
@@ -14,8 +13,6 @@ s3 = boto3.resource("s3")
 def getparrot(event, context):
     '''Get the parrot!'''
 
-    deltemp()
-
     s3.Bucket(BUCKET_NAME).download_file(URL_LIST, "/tmp/" + URL_LIST)
     url = (random.choice(list(open("/tmp/" + URL_LIST))))
     urllib.request.urlretrieve(url, "/tmp/" + IMG)
@@ -25,14 +22,3 @@ def getparrot(event, context):
         ExtraArgs={
             "ContentType": "image/jpeg",
             "ACL": "public-read"})
-
-
-def deltemp():
-    '''The Lambda won't run if tmp stroage is full.
-    Mostly only applicable when testing during
-    development.'''
-
-    dirPath = "/tmp/"
-    fileList = os.listdir(dirPath)
-    for fileName in fileList:
-        os.remove(dirPath + "/" + fileName)
