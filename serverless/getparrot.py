@@ -10,8 +10,15 @@ IMG = "parrot.jpg"
 s3 = boto3.resource("s3")
 
 
+def createbucket():
+    '''If the S3 bucket is not already created, create it.'''
+    s3.create_bucket(Bucket=BUCKET_NAME)
+
+
 def getparrot(event, context):
     '''Get the parrot!'''
+
+    createbucket()
 
     s3.Bucket(BUCKET_NAME).download_file(URL_LIST, "/tmp/" + URL_LIST)
     url = (random.choice(list(open("/tmp/" + URL_LIST))))
