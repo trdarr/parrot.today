@@ -12,7 +12,8 @@ s3 = boto3.resource("s3")
 
 def createbucket():
     '''If the S3 bucket is not already created, create it.'''
-    s3.create_bucket(Bucket=BUCKET_NAME)
+    s3.create_bucket(Bucket=BUCKET_NAME, CreateBucketConfiguration={
+        'LocationConstraint': 'us-east-1'})
 
 
 def getparrot(event, context):
