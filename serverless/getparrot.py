@@ -3,7 +3,6 @@ import random
 import urllib.request
 
 BUCKET_NAME = "parrot.today"
-LOG = "parrots.log"
 URL_LIST = "parrots.txt"
 IMG = "parrot.jpg"
 
